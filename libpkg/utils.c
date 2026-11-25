@@ -182,7 +182,7 @@ pkg_mkdirs(const char *_path)
 	char *p;
 	int dirfd;
 
-	dirfd = open(_path, O_RDONLY|O_DIRECTORY);
+	dirfd = open(_path, O_RDONLY|O_DIRECTORY|O_CLOEXEC);
 	if (dirfd >= 0) {
 		close(dirfd);
 		return EPKG_OK;

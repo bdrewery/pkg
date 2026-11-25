@@ -814,7 +814,7 @@ pkg_repo_create(struct pkg_repo_create *prc, char *path)
 			return (EPKG_FATAL);
 		}
 	}
-	if ((prc->ofd = open(prc->outdir, O_DIRECTORY)) == -1) {
+	if ((prc->ofd = open(prc->outdir, O_DIRECTORY|O_CLOEXEC)) == -1) {
 		pkg_emit_error("Cannot open %s", prc->outdir);
 		return (EPKG_FATAL);
 	}

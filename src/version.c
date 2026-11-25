@@ -729,7 +729,7 @@ do_source_ports(unsigned int opt, char limchar, char *pattern, match_t match,
 		return (EXIT_FAILURE);
 	}
 
-	portsfd = open(portsdir, O_DIRECTORY);
+	portsfd = open(portsdir, O_DIRECTORY|O_CLOEXEC);
 	if (portsfd == -1)
 		err(EXIT_FAILURE, "Cannot open '%s'", portsdir);
 

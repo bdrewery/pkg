@@ -2262,7 +2262,7 @@ pkg_add_fromdir(struct pkg *pkg, const char *src, struct pkgdb *db __unused)
 	install_as_user = (getenv("INSTALL_AS_USER") != NULL);
 	context.install_as_user = install_as_user;
 
-	fromfd = open(src, O_DIRECTORY);
+	fromfd = open(src, O_DIRECTORY|O_CLOEXEC);
 	if (fromfd == -1) {
 		pkg_fatal_errno("Unable to open source directory '%s'", src);
 	}

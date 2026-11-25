@@ -1226,12 +1226,12 @@ open_directory_of(const char *file)
 			pkg_emit_error("Unable to determine current location");
 			return (-1);
 		}
-		return (open(path, O_DIRECTORY));
+		return (open(path, O_DIRECTORY|O_CLOEXEC));
 	}
 	strlcpy(path, file, sizeof(path));
 	walk = strrchr(path, '/');
 	*walk = '\0';
-	return (open(path, O_DIRECTORY));
+	return (open(path, O_DIRECTORY|O_CLOEXEC));
 }
 
 /*
